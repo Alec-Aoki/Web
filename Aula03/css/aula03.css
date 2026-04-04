@@ -1,0 +1,22 @@
+/* Nomenclatura dashed-case */
+/*
+seletor {
+    nome-propriedade: valor;
+}
+*/
+
+p{ /* Todos os parágrafos terão esse estilo */
+    color: red;
+}
+
+.fundo-azul{
+    background-color: cornflowerblue;
+}
+
+.borda{
+    border-color: red;
+}
+
+#cabecalho{
+    color: purple;
+}

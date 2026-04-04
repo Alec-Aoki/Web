@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+        <title> Exercício 2 </title>
+        <style>
+        body {
+            margin: 0;
+            display: flex;
+        }
+        .dropzone {
+            flex: 1;
+            border: 5px solid black;
+        }
+        .item {
+            border: solid 5px black;
+            background-color: darkgrey;
+            color: white1;
+            height: 100px;
+            font-size: 40px;
+            margin: 10px;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .coluna {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 100vh;
+            width: 50%;
+        }
+    </style>
+    </head>
+
+    <body>
+        <div class="dropzone">
+            <div id="carro" class="item"> Carro </div>
+            <div id="escolar" class="item"> Ônibus Escolar </div>
+            <div id="oficiais" class="item"> Viatura Polícia </div>
+            <div id="taxi" class="item"> Táxi </div>
+        </div>
+        <div class="coluna">
+            <div class="dropzone escolar taxi oficiais carro">
+                <h1> Livre </h1>
+            </div>
+            <div class="dropzone escolar">
+                <h1> Escolar </h1>
+            </div>
+            <div class="dropzone taxi">
+                <h1> Taxi </h1>
+            </div>
+            <div class="dropzone escolar oficiais">
+                <h1> Escolar e Oficiais </h1>
+            </div>
+        </div>
+    </body>
+
+    <script>
+        const items = document.getElementsByClassName('item')
+        const dropzones = document.getElementsByClassName('dropzone')
+
+        for(let item of items) {
+            item.draggable = true
+            item.addEventListener('dragstart', function (e) {
+                e.dataTransfer.setData('item.id', e.target.id)
+            })
+        }
+        for(let zone of dropzones) {
+            zone.addEventListener('drop', function (e) {
+                const id = e.dataTransfer.getData('item.id')
+                const item = document.getElementById(id)
+
+                if(zone.classList.contains(id)){
+                    zone.appendChild(item)
+                }
+            })
+            zone.addEventListener('dragover', function (e) {
+                e.preventDefault()
+            })
+        }
+    </script>
+</html>

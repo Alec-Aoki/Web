@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+        <title> Exercício </title>
+        <style>
+            .erro{
+                border: 2px solid red;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div>
+            <form id="meuForm">
+                <label for="fnome"> Nome: </label>
+                <input type="text" id="fnome" name="fnome" onfocusout="validarCampo('fnome', 'Nome')"> <br>
+                <label for="fcpf"> CPF: </label>
+                <input type="text" id="fcpf" name="fcpf" onfocusout="validarCampo('fcpf', 'CPF')"> <br>
+                <label for="ftel"> Telefone: </label>
+                <input type="text" id="ftel" name="ftel" onfocusout="validarCampo('ftel', 'Telefone')"> <br>
+                <input type="submit" value="Enviar" onclick="checarErros(event)">
+            </form>
+        </div>
+        <div>
+            <h1> Alertas </h1>
+            <ul id="alertas"></ul>
+        </div>
+
+        <script>
+            const campos = [
+                {id:'fnome', label:'Nome'},
+                {id:'fcpf', label:'CPF'},
+                {id:'ftel', label:'Telefone'}
+            ];
+
+            function validarCampo(id, label){
+                let campo = document.getElementById(id);
+                if(campo.value.trim() === ''){
+                    campo.classList.add('erro');
+                } else {
+                    campo.classList.remove('erro');
+                }
+            }
+
+            function checarErros(e){
+                e.preventDefault();
+
+                let alertas = document.getElementById('alertas');
+                alertas.innerHTML = '';
+
+                campos.forEach(function(item){
+                    let campo = document.getElementById(item.id);
+                    if(campo.value.trim() === ''){
+                        campo.classList.add('erro');
+                        alertas.innerHTML += `<li> Preencha ${item.label} </li>`;
+                    } else {
+                        campo.classList.remove('erro');
+                    }
+                });
+            }
+        </script>
+    </body>
+</html>
