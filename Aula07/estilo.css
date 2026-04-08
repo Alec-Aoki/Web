@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    display: flex;
+}
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+.maquina{
+    background-image: url('https://www.carryonvending.co.uk/wp-content/uploads/2016/10/esplusV8_LI-N.P-1-scaled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    flex: 1;
+    position: relative;
+}
+.item {
+    width: 10vw;
+    object-fit: contain;
+}
+.coluna {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 100vh;
+    width: 50%;
+}
+#refris div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 15px;
+}
+#refris img{
+    width: 3vw;
+    object-fit: contain;
+}
+#refris button {
+    background-color: #222;
+    color: white;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 8px 16px;
+    font-size: 1em;
+    cursor: pointer;
+    opacity: 60%;
+}
+
+#refris button:hover {
+    background-color: #444;
+}
+#visor{
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+}
+#mensagem{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#mensagem img{
+    width: 8vw;
+    object-fit: contain;
+}
+
+@media(max-width: 768px){
+    body{
+        flex-direction: column;
+    }
+    .coluna{
+        width: 100%;
+        min-height: 60vh;
+    }
+    .maquina{
+        background-position: center;
+    }
+    .item{
+        width: 20vw;
+    }
+    #refris img{
+        width: 8vw;
+    }
+    #visor{
+        bottom: 12%;
+        font-size: 0.8em;
+    }
+    #mensagem img{
+        width: 20vw;
+    }
+}
