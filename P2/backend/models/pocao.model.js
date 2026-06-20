@@ -11,7 +11,7 @@ Pocao.init(
         },
         nome: {
             type: DataTypes.STRING,
-            allowNull: FALSE
+            allowNull: false
         },
         descricao: {
             type: DataTypes.TEXT
@@ -21,7 +21,7 @@ Pocao.init(
         },
         preco: {
             type: DataTypes.INTEGER,
-            allowNull: FALSE
+            allowNull: false
         }
     },
     {
