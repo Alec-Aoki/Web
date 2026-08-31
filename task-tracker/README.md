@@ -47,6 +47,11 @@ Sequência do backend:
 Sequência do frontend:
 1. Setup do projeto (Vite + React + TS)
    1. `npm create vite@latest frontend -- --template react-ts`
+      1. `vite` é uma ferramenta de build que lida com compilar o JSX/TSX em JS puro que o browser consegue rodar, e fornece um servidor local dev rápido
+      2. O template `react-ts` estrutura o React com uma pré-configuração pra TypeScript
+      3. Em `frontend/src/`
+         1. `App.tsx` é o componente raíz e é onde a UI em si será construída
+         2. `main.tsx` é o ponto de entrada, renderizando `<App />` na página
    2. `cd frontend`, `npm install`
    3. Confirmar `npm run dev` mostra página padrão do Vite
 2. Tipos

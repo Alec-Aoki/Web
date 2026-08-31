@@ -19,7 +19,12 @@ router.get("/", (req, res) => {
         (err, tasks) => {
             if(err) return res.status(500).json({error: "Erro da base de dados."});
 
-            res.json(tasks);
+            // No frontend, ao definir o tipo em TS, faz mais sentido definir
+            // o campo completed como booleano. No entanto, o SQLite não tem
+            // o tipo booleano, logo:
+            // vamos receber do cliente e guardar no back como um número, 0 ou 1
+            // mas toda vez que respondermos o cliente, vamos converter pra booleano
+            res.json(tasks.map(t => ({...t, completed: Boolean(t.completed)})));
         }
     );
 });
@@ -40,7 +45,7 @@ router.post("/", (req, res) => {
     );
 });
 
-// PUT /tasks/:id -> atualiza uma task pertencen ao usuário
+// PUT /tasks/:id -> atualiza uma task pertencente ao usuário
 router.put("/:id", (req, res) => {
     const {title, completed} = req.body;
 

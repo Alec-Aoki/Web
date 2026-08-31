@@ -1,0 +1,36 @@
+# Register user
+curl -X POST http://localhost:3000/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{"email":"alec@test.com","password":"test123"}'
+  
+# Auth user
+curl -X POST http://localhost:3000/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"alec@test.com","password":"test123"}'
+  
+-----------------------------------------------
+
+token:
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWxlY0B0ZXN0LmNvbSIsImlhdCI6MTc4ODE3ODc2MiwiZXhwIjoxNzg4MTgyMzYyfQ.Z70_VzWjcJ4tntS3tZ48w2SCOdPEgr9ugCoaNgtlLO4
+
+-----------------------------------------------
+
+
+# Create a task
+curl -X POST http://localhost:3000/tasks \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWxlY0B0ZXN0LmNvbSIsImlhdCI6MTc4ODE3ODc2MiwiZXhwIjoxNzg4MTgyMzYyfQ.Z70_VzWjcJ4tntS3tZ48w2SCOdPEgr9ugCoaNgtlLO4" \
+  -d '{"title":"Learn async/await"}'
+
+# List tasks
+curl http://localhost:3000/tasks -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWxlY0B0ZXN0LmNvbSIsImlhdCI6MTc4ODE3ODc2MiwiZXhwIjoxNzg4MTgyMzYyfQ.Z70_VzWjcJ4tntS3tZ48w2SCOdPEgr9ugCoaNgtlLO4"
+
+# Update the task (use the id from the create response)
+curl -X PUT http://localhost:3000/tasks/1 \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWxlY0B0ZXN0LmNvbSIsImlhdCI6MTc4ODE3ODc2MiwiZXhwIjoxNzg4MTgyMzYyfQ.Z70_VzWjcJ4tntS3tZ48w2SCOdPEgr9ugCoaNgtlLO4" \
+  -d '{"completed":1}'
+
+# Delete it
+curl -X DELETE http://localhost:3000/tasks/1 -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoiYWxlY0B0ZXN0LmNvbSIsImlhdCI6MTc4ODE3ODc2MiwiZXhwIjoxNzg4MTgyMzYyfQ.Z70_VzWjcJ4tntS3tZ48w2SCOdPEgr9ugCoaNgtlLO4"
